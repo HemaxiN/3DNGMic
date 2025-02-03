@@ -41,9 +41,14 @@ def augm(image, vx, vy, vz):
         image = bbox_aux.copy()
         del bbox_aux
         
+    
     vy = image.shape[1]/2
     vx = image.shape[0]/2
     vz = image.shape[2]/2
+    
+    #print('size image {}'.format(image.shape))
+    #print('vx {}'.format(vx))
+    #print('vy {}'.format(vy))
     
     image = (image*255.0).astype('uint8')
     
@@ -146,9 +151,9 @@ def inputs_generation(save_dir_masks, save_dir_vecs, nb_patches):
         for j in range(0, nb_pairs):
             accept = False
             while not accept:
-                nctrx = np.random.choice(np.arange(5,patch_size_x_y-5))
-                nctry = np.random.choice(np.arange(5,patch_size_x_y-5))
-                nctrz = np.random.choice(np.arange(10,50))
+                nctrx = np.random.choice(np.arange(10,patch_size_x_y-10))
+                nctry = np.random.choice(np.arange(10,patch_size_x_y-10))
+                nctrz = np.random.choice(np.arange(20,40))
 
                 ngdistx = np.random.choice(np.arange(-10,10))
                 ngdisty = np.random.choice(np.arange(-10,10))
@@ -167,8 +172,8 @@ def inputs_generation(save_dir_masks, save_dir_vecs, nb_patches):
                 else:
                     gctrz = min(nctrz+ngdistz, patch_size_z)
 
-                volxy = 15
-                volz = 10
+                volxy = 10
+                volz = 5
 
                 limnxi = max(nctrx-volxy,0)
                 limnxs = min(nctrx+volxy, patch_size_x_y)
@@ -323,3 +328,4 @@ def summarize_performance(g_model, samples_, input_path, save_dir):
 def predict(models_path, input_path, save_dir, patch_numbers):
       g_model = load_model(models_path)
       summarize_performance(g_model, patch_numbers, input_path, save_dir)
+
