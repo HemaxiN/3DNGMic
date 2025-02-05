@@ -7,6 +7,20 @@ Endothelial cells (ECs), which line the inner surface of blood vessels, play a c
 
 ![](https://github.com/HemaxiN/3DNGMic/blob/main/images/example_dataset.JPG)
 
+
+## Dataset Structure and Contents
+
+Our dataset, named 3DNGMic, is structured into four main folders: `train`, `val`, `test`, `domain shift test`, and `synthetic`. Each of these folders contains four subdirectories:
+
+- **inputs/** - contains segmentation subvolumes of nuclei and Golgi (128×128×64×2); inputs of the Vox2Vox model.
+
+- **outputs/** - contains microscopy image subvolumes (128×128×64×2); real for `domain shift test`, `train`, `val`, and `test`, and generated with a trained Vox2Vox model for `synthetic`.
+
+- **vectors/** - contains the coordinates of the paired nucleus-Golgi centroids (N×6); manually annotated for `train`, `val`, `test`, and `domain shift test`, and automatically generated for `synthetic`.
+
+- **heatmaps/** - contains the Gaussian heatmaps of nuclei and Golgi centroids (128×128×64×2); these heatmaps were created automatically by placing a Gaussian kernel on top of each annotated centroid (Fig. \ref{fig:heatmaps}).
+
+
 ## Instructions
 
 All instructions for visualizing the dataset (in 2D and 3D), training and evaluating the Vox2Vox model for synthetic image generation, generating new data using the trained Vox2Vox model are provided in the notebook [main.ipynb](./main.ipynb).
