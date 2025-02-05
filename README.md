@@ -18,7 +18,7 @@ Our dataset, named 3DNGMic, is structured into four main folders: `train`, `val`
 
 - **vectors/** - contains the coordinates of the paired nucleus-Golgi centroids (N×6); manually annotated for `train`, `val`, `test`, and `domain shift test`, and automatically generated for `synthetic`.
 
-- **heatmaps/** - contains the Gaussian heatmaps of nuclei and Golgi centroids (128×128×64×2); these heatmaps were created automatically by placing a Gaussian kernel on top of each annotated centroid (Fig. \ref{fig:heatmaps}).
+- **heatmaps/** - contains the Gaussian heatmaps of nuclei and Golgi centroids (128×128×64×2); these heatmaps were created automatically by placing a Gaussian kernel on top of each annotated centroid.
 
 
 ## Instructions
